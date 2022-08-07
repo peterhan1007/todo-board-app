@@ -28,7 +28,7 @@ export const REGISTER = gql`
   }
 `;
 
-export const CreateJob = gql`
+export const CREATEJOB = gql`
   mutation CreateJob($jobInfo: JobInput!) {
     createJob(jobInfo: $jobInfo) {
       id
