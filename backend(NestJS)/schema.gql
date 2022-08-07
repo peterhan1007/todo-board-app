@@ -1,0 +1,68 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Job {
+  id: Int!
+  title: String!
+  description: String!
+  rate: Float!
+  status: String!
+  isApproved: Boolean!
+  user: User!
+}
+
+type User {
+  id: Int!
+  name: String!
+  password: String!
+  title: String!
+  description: String!
+  rate: Float!
+  isApproved: Boolean!
+  role: String!
+  email: String!
+  jobs: [Job!]!
+}
+
+type AuthUserPayload {
+  user: User!
+  token: String!
+}
+
+type Query {
+  hello: String!
+  getUser(id: Int!): User
+  getAllJobs: [Job!]
+  getJobById(id: Int!): Job
+}
+
+type Mutation {
+  register(userInfo: RegisterUserInput!): AuthUserPayload
+  login(userInfo: LoginUserInput!): AuthUserPayload
+  createJob(jobInfo: JobInput!): Job
+  updateJob(jobInfo: JobInput!, id: Int!): Job
+  removeJob(id: Int!): Boolean
+}
+
+input RegisterUserInput {
+  name: String!
+  title: String!
+  description: String!
+  email: String!
+  password: String!
+  role: String!
+  rate: Float!
+}
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+
+input JobInput {
+  title: String
+  description: String
+  rate: Float
+  status: String
+}
